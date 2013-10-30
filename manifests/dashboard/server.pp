@@ -12,6 +12,7 @@ class puppet::dashboard::server (
   $mysql_password            = 'puppet',
   $mysql_max_packet_size     = '32M',
   $security                  = 'none',
+  $httpd_dir                 = '/etc/httpd',
 ) inherits puppet::dashboard {
 
   validate_absolute_path($htpasswd_path)
@@ -45,7 +46,7 @@ class puppet::dashboard::server (
 
   file { 'dashboard_vhost':
     ensure  => file,
-    path    => '/etc/httpd/conf.d/dashboard.conf',
+    path    => "${httpd_dir}/conf.d/dashboard.conf",
     content => template('puppet/dashboard-vhost.conf.erb'),
     owner   => 'root',
     group   => 'root',

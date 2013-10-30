@@ -4,6 +4,7 @@ class puppet::master (
   $rack_dir        = '/usr/share/puppet/rack/puppetmasterd',
   $puppet_user     = 'puppet',
   $manage_firewall = undef,
+  $httpd_dir       = '/etc/httpd',
 ) {
 
   include apache::mod::ssl
@@ -71,7 +72,7 @@ class puppet::master (
 
   file { 'puppetmaster_vhost':
     ensure  => file,
-    path    => '/etc/httpd/conf.d/puppetmaster.conf',
+    path    => "${httd_dir}/conf.d/puppetmaster.conf"",
     content => template('puppet/puppetmaster-vhost.conf.erb'),
     owner   => 'root',
     group   => 'root',
