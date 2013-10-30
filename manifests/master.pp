@@ -72,7 +72,7 @@ class puppet::master (
 
   file { 'puppetmaster_vhost':
     ensure  => file,
-    path    => "${httd_dir}/conf.d/puppetmaster.conf"",
+    path    => "${httd_dir}/conf.d/puppetmaster.conf",
     content => template('puppet/puppetmaster-vhost.conf.erb'),
     owner   => 'root',
     group   => 'root',
